@@ -1,37 +1,22 @@
 package org.example;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 public class Transaction {
-    private String date;
-    private String time;
     private String description;
     private String vendor;
     private double amount;
 
     public Transaction(String date, String time, String description, String vendor, double amount) {
-        this.date = date;
-        this.time = time;
+
         this.description = description;
         this.vendor = vendor;
         this.amount = amount;
     }
 
     public Transaction() {
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
     }
 
     public String getDescription() {
@@ -56,5 +41,22 @@ public class Transaction {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+    public static String getDate() {
+
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return date.format(df);
+    }
+    public void setDate(String date) {
+
+    }
+    public static String getTime() {
+        LocalTime time = LocalTime.now();
+        DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm:ss");
+        return time.format(tf);
+    }
+    public void setTime(String time) {
+
     }
 }

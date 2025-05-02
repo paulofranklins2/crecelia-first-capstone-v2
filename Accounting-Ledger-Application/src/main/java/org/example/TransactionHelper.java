@@ -3,16 +3,28 @@ package org.example;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class TransactionHelper {
-    public static void writeDeposite() {
+    static Scanner asking = new Scanner(System.in);
+    public static void addTransaction(double amount, String description, String vendor) {
+        List<Transaction> transaction = new ArrayList<>();
+
+        String transactionFile = "transactions.csv";
+        String date = Transaction.getDate();
+        String time = Transaction.getTime();
         try {
-            FileWriter fileW = new FileWriter("transactions.csv");
+            FileWriter fileW = new FileWriter(transactionFile);
             BufferedWriter bufWriter = new BufferedWriter(fileW);
 
-
             String text;
-            text = String.format();
+            text = String.format("%s | %s | %s | %s | %.2f\n",
+                    date, time, description, vendor, amount);
             bufWriter.write(text);
 
 
@@ -24,6 +36,30 @@ public class TransactionHelper {
             ex.getStackTrace();
             throw new RuntimeException(ex);
         }
-    }
 
+        }
+    public static void addDeposit() {
+        System.out.println("Enter deposit amount: ");
+        double depositAmount = asking.nextDouble();
+        asking.nextLine();
+        System.out.println("Enter description: ");
+        String description = asking.nextLine();
+        System.out.println("Enter vendor: ");
+        String vendor = asking.nextLine();
+
+        addTransaction(depositAmount, description, vendor);
+
+    }
+    public static void makePayment() {
+        System.out.println("Enter payment amount: ");
+        double paymentAmount = asking.nextDouble();
+        asking.nextLine();
+        System.out.println("Enter description: ");
+        String description = asking.nextLine();
+        System.out.println("Enter vendor: ");
+        String vendor = asking.nextLine();
+
+        addTransaction(-paymentAmount, description, vendor);
+
+    }
 }
