@@ -1,6 +1,9 @@
 # Capstone #1: Accounting Ledger Application
 1st Capstone
 # About Accounting Ledger Application
+the first capstone project we will use what we have learned about Java programming to 
+create a CLI application. With this application you can track all financial 
+transactions for a business or for personal use.
 
 # Video
 
