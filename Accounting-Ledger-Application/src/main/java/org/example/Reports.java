@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class Reports {
     static Scanner asking = new Scanner(System.in);
     public static List<Transaction> readFromCSV() {
@@ -27,7 +28,7 @@ public class Reports {
                     String vendor = parts[3];
                     double amount = Double.parseDouble(parts[4]);
 
-                    Transaction transaction = new Transaction("", "", "", "", 0);
+                    Transaction transaction = new Transaction(date, time, description, vendor, amount);
                     transactionList.add(transaction);
 
                 }
@@ -49,12 +50,12 @@ public class Reports {
         boolean found = false;
 
         for (Transaction t : transactions) {
-            LocalDate transactionDate = LocalDate.parse(Transaction.getDate());
-            int month = transactionDate.getMonthValue();
-            int year = transactionDate.getYear();
-            if (transactionDate.getMonthValue() == month && transactionDate
-                    .getYear() == year) {
+            LocalDate transactionDate = LocalDate.parse(t.getDate());
+
+            if (transactionDate.getMonthValue() == now.getMonthValue() && transactionDate
+                    .getYear() == now.getYear()) {
                 System.out.println(t);
+
                 found = true;
             }
 
@@ -69,10 +70,9 @@ public class Reports {
         boolean found = false;
         System.out.println("Previous Month Report: ");
         for (Transaction t : transactions) {
-            LocalDate transactionDate = LocalDate.parse(Transaction.getDate());
-            int month = transactionDate.getMonthValue();
-            int year = transactionDate.getYear();
-            if (transactionDate.getMonthValue() == month - 1 && transactionDate.getYear() == year) {
+            LocalDate transactionDate = LocalDate.parse(t.getDate());
+
+            if (transactionDate.getMonthValue() == now.getMonthValue() - 1 && transactionDate.getYear() == now.getYear()) {
                 System.out.println(t);
                 found = true;
             }
@@ -85,12 +85,12 @@ public class Reports {
     }
     public static void yearToDate() {
         List<Transaction> transactions = readFromCSV();
+        LocalDate now = LocalDate.now();
         boolean found = false;
         for (Transaction t : transactions) {
-            LocalDate transactionDate = LocalDate.parse(Transaction.getDate());
+            LocalDate transactionDate = LocalDate.parse(t.getDate());
 
-            int year = transactionDate.getYear();
-            if (transactionDate.getYear() == year) {
+            if (transactionDate.getYear() == now.getYear()) {
                 System.out.println(t);
                 found = true;
             }
@@ -102,13 +102,14 @@ public class Reports {
     }
     public static void previousYear() {
         List<Transaction> transactions = readFromCSV();
+        LocalDate now = LocalDate.now();
         boolean found = false;
 
         for (Transaction t : transactions) {
-            LocalDate transactionDate = LocalDate.parse(Transaction.getDate());
+            LocalDate transactionDate = LocalDate.parse(t.getDate());
 
-            int year = transactionDate.getYear();
-            if (transactionDate.getYear() == year - 1) {
+
+            if (transactionDate.getYear() == now.getYear() - 1) {
                 System.out.println(t);
                 found = true;
             }

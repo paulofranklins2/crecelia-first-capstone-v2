@@ -3,23 +3,18 @@ package org.example;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class TransactionHelper {
     static Scanner asking = new Scanner(System.in);
     public static void addTransaction(double amount, String description, String vendor) {
-        List<Transaction> transaction = new ArrayList<>();
+
 
         String transactionFile = "transactions.csv";
         String date = Transaction.getDate();
         String time = Transaction.getTime();
         try {
-            FileWriter fileW = new FileWriter(transactionFile);
+            FileWriter fileW = new FileWriter(transactionFile, true);
             BufferedWriter bufWriter = new BufferedWriter(fileW);
 
             String text;
@@ -33,7 +28,7 @@ public class TransactionHelper {
 
         catch (IOException ex) {
             System.out.println("ERROR:  An unexpected error occurred");
-            ex.getStackTrace();
+            ex.printStackTrace();
             throw new RuntimeException(ex);
         }
 

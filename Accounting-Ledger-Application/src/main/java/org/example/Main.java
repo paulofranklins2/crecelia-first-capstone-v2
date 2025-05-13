@@ -49,12 +49,15 @@ public class Main {
                     ledgerMenu = false;
                     reportsMenu = true;
                 } else if (userInput.equalsIgnoreCase("H")) {
+                    ledgerMenu = false;
                     homeMenu = true;
+
                 } else {
                     System.out.println("⚠\uFE0F Invalid Option ⚠\uFE0F");
                 }
                 while (reportsMenu) {
                     System.out.println("==========Reports---Menu==========");
+                    System.out.println("Enter x to exit");
                     System.out.println("1) Month To Date\n2) Previous Month\n3) Year To Date\n4) Previous Year\n5) Search by Vendor\n0) Back");
                     userInput = asking.nextLine();
                     if (userInput.equalsIgnoreCase("1")) {
@@ -68,8 +71,11 @@ public class Main {
                     } else if (userInput.equalsIgnoreCase("5")) {
                         Reports.searchByVendor();
                     } else if (userInput.equalsIgnoreCase("0")) {
-                        //reportsMenu = false;
-                        //return;
+                        reportsMenu = false;
+                        ledgerMenu = true;
+                    } else if (userInput.equalsIgnoreCase("x")) {
+                        System.out.println("Exiting...");
+                        return;
                     } else {
                         System.out.println("⚠\uFE0F Invalid Option ⚠\uFE0F");
                     }
