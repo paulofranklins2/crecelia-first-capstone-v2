@@ -23,17 +23,17 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public static String getTransactionDate() {
-        LocalDate date = LocalDate.now();
-        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        return date.format(df);
-    }
-
-    public static String getTransactionTime() {
-        LocalTime time = LocalTime.now();
-        DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm:ss");
-        return time.format(tf);
-    }
+//    public static String getTransactionDate() {
+//        LocalDate date = LocalDate.now();
+//        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//        return date.format(df);
+//    }
+//
+//    public static String getTransactionTime() {
+//        LocalTime time = LocalTime.now();
+//        DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm:ss");
+//        return time.format(tf);
+//    }
 
     public String toString() {
         return String.format("%s | %s | %s | %s | %.2f\n",
