@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.model.Transaction;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,8 +13,8 @@ public class TransactionHelper {
 
 
         String transactionFile = "transactions.csv";
-        String date = Transaction.getDate();
-        String time = Transaction.getTime();
+        String date = Transaction.getTransactionDate();
+        String time = Transaction.getTransactionTime();
         try {
             FileWriter fileW = new FileWriter(transactionFile, true);
             BufferedWriter bufWriter = new BufferedWriter(fileW);

@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.model.Transaction;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -50,7 +52,7 @@ public class Reports {
         boolean found = false;
 
         for (Transaction t : transactions) {
-            LocalDate transactionDate = LocalDate.parse(t.getDate());
+            LocalDate transactionDate = LocalDate.parse(t.getTransactionDate());
 
             if (transactionDate.getMonthValue() == now.getMonthValue() && transactionDate
                     .getYear() == now.getYear()) {
@@ -70,7 +72,7 @@ public class Reports {
         boolean found = false;
         System.out.println("Previous Month Report: ");
         for (Transaction t : transactions) {
-            LocalDate transactionDate = LocalDate.parse(t.getDate());
+            LocalDate transactionDate = LocalDate.parse(t.getTransactionDate());
 
             if (transactionDate.getMonthValue() == now.getMonthValue() - 1 && transactionDate.getYear() == now.getYear()) {
                 System.out.println(t);
@@ -88,7 +90,7 @@ public class Reports {
         LocalDate now = LocalDate.now();
         boolean found = false;
         for (Transaction t : transactions) {
-            LocalDate transactionDate = LocalDate.parse(t.getDate());
+            LocalDate transactionDate = LocalDate.parse(t.getTransactionDate());
 
             if (transactionDate.getYear() == now.getYear()) {
                 System.out.println(t);
@@ -106,7 +108,7 @@ public class Reports {
         boolean found = false;
 
         for (Transaction t : transactions) {
-            LocalDate transactionDate = LocalDate.parse(t.getDate());
+            LocalDate transactionDate = LocalDate.parse(t.getTransactionDate());
 
 
             if (transactionDate.getYear() == now.getYear() - 1) {
