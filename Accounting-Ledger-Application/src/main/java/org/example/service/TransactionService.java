@@ -31,9 +31,7 @@ public class TransactionService {
     public void saveTransaction(Transaction transaction, boolean isUi) {
         repository.save(transaction);
         System.out.println("Saved: " + transaction.saveTransactionToString().toUpperCase().trim());
-        if (!isUi) {
-            consoleUtils.pauseAndClearScreen();
-        }
+        consoleUtils.pauseAndClearScreen();
     }
 
     public List<Transaction> getTransactions() {
