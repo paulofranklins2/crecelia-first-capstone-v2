@@ -13,7 +13,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class TransactionRepository {
-    private static final String FILE_PATH = "src/main/resources/transactions.csv";
+    private static final String FILE_PATH = "Accounting-Ledger-Application/src/main/resources/transactions.csv";
 
     /**
      * Appends the given transaction to the CSV file.
